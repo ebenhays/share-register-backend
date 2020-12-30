@@ -1,0 +1,36 @@
+{
+  "name": "feedback",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon app",
+    "migrate": "node_modules/.bin/sequelize db:migrate",
+    "seed": "node_modules/.bin/sequelize db:seed:all"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "@sendgrid/mail": "^6.5.5",
+    "app-root-path": "^3.0.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "celebrate": "^13.0.4",
+    "chance": "^1.1.7",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "helmet": "^3.21.3",
+    "http-errors": "~1.6.3",
+    "joi": "^17.3.0",
+    "moment": "^2.29.1",
+    "morgan": "~1.9.1",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.2",
+    "numeral": "^2.0.6",
+    "password-generator": "^2.2.3",
+    "sequelize": "^5.21.5",
+    "sequelize-cli": "^5.5.1",
+    "uuidv4": "^6.2.5",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {}
+}
