@@ -2,15 +2,16 @@ const joi = require("joi");
 
 const customerValidation = (req, res, next) => {
   const { body } = req;
+  console.log(body);
   const customerSchema = joi.object().keys({
     fullName: joi.string().max(100).required(),
     primaryPhone: joi.string().min(10).max(10).required(),
     emailAddress: joi.string().email().required(),
-    secondaryPhone: joi.string(),
-    address: joi.string(),
+    secondaryPhone: joi.string().allow(""),
+    address: joi.string().allow(""),
   });
   const { error, value } = customerSchema.validate(body);
-  if (error === null) {
+  if (error === undefined) {
     return next();
   } else {
     return res.status(400).json({
@@ -22,10 +23,10 @@ const accountValidation = (req, res, next) => {
   const { body } = req;
   const accountSchema = joi.object().keys({
     customerNo: joi.string().min(10).max(10).required(),
-    createdBy: joi.string(),
+    createdBy: joi.string().allow(""),
   });
   const { error, value } = accountSchema.validate(body);
-  if (error === null) {
+  if (error === undefined) {
     return next();
   } else {
     return res.status(400).json({
@@ -42,7 +43,7 @@ const shareValidation = (req, res, next) => {
     sharePrice: joi.number().required(),
   });
   const { error, value } = sharesSchema.validate(body);
-  if (error === null) {
+  if (error === undefined) {
     return next();
   } else {
     return res.status(400).json({
@@ -57,7 +58,7 @@ const sharePriceValidation = (req, res, next) => {
     sharePrice: joi.number().required(),
   });
   const { error, value } = sharesPriceSchema.validate(body);
-  if (error === null) {
+  if (error === undefined) {
     return next();
   } else {
     return res.status(400).json({

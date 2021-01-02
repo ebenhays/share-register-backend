@@ -1,6 +1,7 @@
 const { generateCustomerNumber } = require("../../commons/formatters");
 const moment = require("moment");
 const { Customer } = require("../../database/models/index");
+const e = require("express");
 
 const CreateCustomer = async (req, res) => {
   try {
@@ -137,7 +138,19 @@ const getCustomers = async (req, res) => {
       order: [["fullName", "ASC"]],
     });
     if (findCust) {
-      res.status(200).json({ result: findCust });
+      res.status(200).json({
+        result: findCust.map((el) => {
+          return {
+            id: el.id,
+            customerNo: el.customerNo,
+            fullName: el.fullName,
+            emailAddress: el.emailAddress,
+            address: el.address,
+            createdBy: el.createdBy,
+            primaryPhone: el.primaryPhone,
+          };
+        }),
+      });
     } else {
       res.status(404).json([]);
     }
